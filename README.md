@@ -22,7 +22,7 @@ https://github.com/joshtrichards/aws-ebs-snapshots-lambda
 Configuration is done through tags that you add to your ECS instances 
 
 Backup: Yes
-BackupCrossRegion: <give-target-region-code>
+BackupCrossRegion: <target-region-code>
 
 ![ECS instance with tags](ecs-tags.jpg)
 
@@ -30,15 +30,19 @@ Your snapshots will look something like this
 
 ![ECS snapshot example](snapshot-tags.jpg)
 
-## Files:
-
 Each file here implements a single AWS Lambda function.
 
 - ebs-snapshot-creator.py (run daily)
 - ebs-snapshot-manager.py (run daily)
 - ebs-snapshot-cross-region.py (run weekly)
 
-Setup a rule to run these in AWS CloudWatch.
+Setup a rule to run these in AWS CloudWatch in the regin where you want your backups to run.
+
+In the disaster recovery (DR) region you also need to setup a function or old DR backups will never be removed
+
+- ebs-snapshot-manager.py (run daily)
+
+![ECS snapshot example](snapshot-dr-zone-tags.jpg)
 
 There is a gotcha: If the instance is running, EBS snapshots are as if someone pulled out the power 
 cord of the computer, pulled the volume out and copied it (the snapshot), then turned the computer 
