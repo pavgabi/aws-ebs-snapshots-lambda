@@ -8,6 +8,9 @@ https://aws.amazon.com/premiumsupport/knowledge-center/ebs-snapshot-data-lifecyc
 This is an extension on a implementation forked from 
 https://github.com/joshtrichards/aws-ebs-snapshots-lambda 
 
+YouTube video that introduces you to AWS functions and how to set it up.
+https://youtu.be/JL5_oHoAeoI
+
 ## Functionality:
 
 - Automatic snapshots (on whatever schedule you prefer)
